@@ -2,20 +2,20 @@
 # coding: utf-8
 import time
 
-def memoize(f):
+def cache(f):
     cache_list = {}
-    def add_memoize(*args):
+    def add_cache(*args):
         if args in cache_list:
             return cache_list[args]
         else:
             cache_list[args] = f(*args)
             return cache_list[args]
-    return add_memoize
+    return add_cache
 
 def fib_o(n):
     return n if n < 2 else fib_o(n-2) + fib_o(n-1)
 
-@memoize
+@cache
 def fib(n):
     return n if n < 2 else fib(n-2) + fib(n-1)
 
